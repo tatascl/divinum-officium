@@ -1,0 +1,197 @@
+/**
+ * offline.css - Styles for offline mode indicator and bookmark features
+ */
+
+/* Offline mode indicator */
+#offline-indicator {
+  display: none;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 8px 12px;
+  background-color: #ff9800;
+  color: white;
+  border-radius: 4px;
+  font-weight: bold;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#offline-indicator.active {
+  display: block;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Bookmark button */
+.btn-bookmark {
+  padding: 6px 10px;
+  margin: 2px;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.btn-bookmark:hover {
+  background-color: #e0e0e0;
+  border-color: #999;
+}
+
+.btn-bookmark.active {
+  background-color: #ffc107;
+  color: #333;
+  border-color: #ff9800;
+  font-weight: bold;
+}
+
+.btn-bookmark.active::before {
+  content: '★ ';
+}
+
+.btn-bookmark:not(.active)::before {
+  content: '☆ ';
+}
+
+/* Bookmarks sidebar/panel */
+.bookmarks-panel {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 12px;
+  margin: 10px 0;
+}
+
+.bookmarks-panel h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.bookmarks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bookmarks-list li {
+  padding: 8px;
+  margin-bottom: 6px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bookmarks-list li a {
+  flex-grow: 1;
+  color: #0066cc;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.bookmarks-list li a:hover {
+  text-decoration: underline;
+}
+
+.bookmarks-list li .remove-btn {
+  padding: 4px 8px;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.bookmarks-list li .remove-btn:hover {
+  background-color: #ff4444;
+}
+
+.bookmarks-list.empty {
+  padding: 10px;
+  text-align: center;
+  color: #999;
+}
+
+/* Cache status */
+.cache-status {
+  font-size: 12px;
+  color: #666;
+  margin-top: 8px;
+  padding: 8px;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+}
+
+.cache-status strong {
+  color: #333;
+}
+
+/* Offline mode banner */
+.offline-banner {
+  display: none;
+  background-color: #ff9800;
+  color: white;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+body.offline-mode .offline-banner {
+  display: block;
+}
+
+/* Disabled state when offline */
+body.offline-mode .requires-online {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  #offline-indicator {
+    top: 5px;
+    right: 5px;
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .bookmarks-panel {
+    margin: 5px 0;
+    padding: 10px;
+  }
+
+  .bookmarks-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bookmarks-list li a {
+    margin-bottom: 6px;
+    margin-right: 0;
+  }
+
+  .bookmarks-list li .remove-btn {
+    width: 100%;
+    margin-top: 4px;
+  }
+}
