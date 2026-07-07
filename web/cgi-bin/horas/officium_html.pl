@@ -185,4 +185,17 @@ sub par_c {
   "<P ALIGN=CENTER>@_</P>\n";
 }
 
+<!-- Before </body> -->
+<script src="/www/js/bookmark-manager.js"></script>
+<script src="/www/js/offline-cache.js"></script>
+<script src="/www/js/storage-init.js"></script>
+<link rel="stylesheet" href="/www/style/offline.css">
+
+<div id="offline-indicator"></div>
+
+<button class="btn-bookmark" 
+  onclick="toggleBookmark('${date}', '${hora}', '${version}', '${lang}', '${title}')">
+  Bookmark
+</button>
+
 1;
